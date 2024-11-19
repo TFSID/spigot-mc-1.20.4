@@ -1,0 +1,12 @@
+services:
+  server:
+    build:
+      context: ./server/
+      dockerfile: Dockerfile
+    container_name: spigot-server-1.20.4
+    stdin_open: true
+    tty: true
+    ports:
+      - "9584:25565"
+    volumes:
+      - ./server:/app/server
