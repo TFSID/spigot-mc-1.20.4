@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "uuid": "be2f5bbe-ecd7-343e-90ff-003cd1ad8f3c",
+    "name": "TFSID",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  }
+]

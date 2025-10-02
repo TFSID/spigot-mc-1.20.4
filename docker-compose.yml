@@ -4,9 +4,29 @@ services:
       context: ./server/
       dockerfile: Dockerfile
     container_name: spigot-server-1.20.4
+    restart: unless-stopped
     stdin_open: true
     tty: true
     ports:
       - "9584:25565"
     volumes:
-      - ./server:/app/server
+      - ./server:/app/
+    networks:
+      - mc_network
+
+  playit:
+    image: ghcr.io/playit-cloud/playit-agent:0.16
+    restart: unless-stopped
+    depends_on:
+      - server
+    # networks:
+      # - mc_network
+    network_mode: host
+    environment:
+      - SECRET_KEY=${PLAYIT_SECRET_KEY}
+    # command: server:25565
+
+# Custom Network
+networks:
+  mc_network:
+    driver: bridge
